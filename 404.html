@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>King Experience</title>
+    <script>
+        var path = window.location.pathname;
+        var page = path.split('/').pop();
+        var validPages = ['home', 'shop', 'orders', 'downloads', 'admin'];
+        var hash = validPages.includes(page) ? '#' + page : '#home';
+        window.location.replace(window.location.origin + '/' + hash);
+    </script>
+</head>
+<body>
+    <p>Đang chuyển hướng...</p>
+</body>
+</html>

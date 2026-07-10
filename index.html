@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>King Experience - Cửa Hàng Vật Phẩm Minecraft</title>
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Cinzel:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-container">
+            <div class="loading-crown">
+                <i class="fas fa-crown"></i>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <p class="loading-text">Đang khởi tạo King Experience...</p>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-brand" onclick="navigateTo('home')">
+                <i class="fas fa-crown nav-icon"></i>
+                <span class="nav-title">King Experience</span>
+                <span class="nav-server">kingmc.vn</span>
+            </div>
+            <div class="nav-links" id="nav-links">
+                <a class="nav-link active" data-page="home" onclick="navigateTo('home')">
+                    <i class="fas fa-home"></i> Trang Chủ
+                </a>
+                <a class="nav-link" data-page="shop" onclick="navigateTo('shop')">
+                    <i class="fas fa-store"></i> Shop
+                </a>
+                <a class="nav-link" data-page="orders" onclick="navigateTo('orders')">
+                    <i class="fas fa-receipt"></i> Đơn Hàng
+                </a>
+                <a class="nav-link" data-page="downloads" onclick="navigateTo('downloads')">
+                    <i class="fas fa-download"></i> Download
+                </a>
+                <a class="nav-link" data-page="admin" onclick="navigateTo('admin')" id="admin-link" style="display:none;">
+                    <i class="fas fa-shield-alt"></i> Admin
+                </a>
+            </div>
+            <div class="nav-user" id="nav-user">
+                <button class="btn-login" id="login-btn" onclick="loginWithDiscord()">
+                    <i class="fab fa-discord"></i> Đăng Nhập
+                </button>
+                <div class="user-info" id="user-info" style="display:none;">
+                    <img class="user-avatar" id="user-avatar" src="" alt="Avatar">
+                    <span class="user-name" id="user-name"></span>
+                    <button class="btn-logout" onclick="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                    </button>
+                </div>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- MAIN CONTENT -->
+    <main id="main-content">
+
+        <!-- ===== HOME PAGE ===== -->
+        <section id="page-home" class="page active">
+            <div class="hero-section">
+                <div class="hero-bg"></div>
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <i class="fas fa-crown"></i>
+                        <span>Server Minecraft #1 Việt Nam</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="title-gold">KING</span>
+                        <span class="title-experience">EXPERIENCE</span>
+                    </h1>
+                    <p class="hero-subtitle">Cửa hàng vật phẩm Minecraft uy tín hàng đầu. Mua Spawner chất lượng cao, giá tốt nhất trên kingmc.vn.</p>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Đơn hàng đã giao</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">99%</div>
+                            <div class="stat-label">Khách hàng hài lòng</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Hỗ trợ online</div>
+                        </div>
+                    </div>
+                    <div class="hero-actions">
+                        <button class="btn-hero btn-primary" onclick="navigateTo('shop')">
+                            <i class="fas fa-shopping-cart"></i> Mua Ngay
+                        </button>
+                        <button class="btn-hero btn-secondary" onclick="navigateTo('downloads')">
+                            <i class="fas fa-download"></i> Free Download
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="features-section">
+                <h2 class="section-title">
+                    <i class="fas fa-gem"></i>
+                    <span>Tại sao chọn King Experience?</span>
+                </h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3>Giao hàng nhanh</h3>
+                        <p>Duyệt đơn và giao hàng trong vòng 5-30 phút</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>An toàn tuyệt đối</h3>
+                        <p>Vật phẩm 100% hợp lệ, không lo bị ban</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3>Giá tốt nhất</h3>
+                        <p>Cam kết giá rẻ nhất trên kingmc.vn</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3>Hỗ trợ 24/7</h3>
+                        <p>Đội ngũ support luôn sẵn sàng giúp đỡ</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SHOP PAGE ===== -->
+        <section id="page-shop" class="page">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-store"></i> Shop</h1>
+                <p class="page-subtitle">Mua Spawner chất lượng cao trên kingmc.vn</p>
+            </div>
+            <div class="shop-grid" id="shop-grid"></div>
+        </section>
+
+        <!-- ===== ORDERS PAGE ===== -->
+        <section id="page-orders" class="page">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-receipt"></i> Đơn Hàng Của Tôi</h1>
+                <p class="page-subtitle">Theo dõi trạng thái đơn hàng của bạn trên kingmc.vn</p>
+            </div>
+            <div class="orders-container" id="orders-container">
+                <div class="empty-state" id="orders-empty">
+                    <i class="fas fa-box-open"></i>
+                    <p>Bạn chưa có đơn hàng nào</p>
+                </div>
+                <div class="orders-list" id="orders-list"></div>
+            </div>
+        </section>
+
+        <!-- ===== DOWNLOADS PAGE ===== -->
+        <section id="page-downloads" class="page">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-download"></i> Free Download</h1>
+                <p class="page-subtitle">Tải miễn phí các schematics, Litematica cho kingmc.vn</p>
+            </div>
+            <div class="downloads-controls">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="download-search" placeholder="Tìm kiếm..." oninput="filterDownloads()">
+                </div>
+                <div class="filter-tabs" id="download-filters">
+                    <button class="filter-tab active" data-filter="all" onclick="setDownloadFilter('all')">Tất cả</button>
+                    <button class="filter-tab" data-filter="schem" onclick="setDownloadFilter('schem')">.schem</button>
+                    <button class="filter-tab" data-filter="schematic" onclick="setDownloadFilter('schematic')">.schematic</button>
+                    <button class="filter-tab" data-filter="litematic" onclick="setDownloadFilter('litematic')">.litematic</button>
+                </div>
+            </div>
+            <div class="downloads-grid" id="downloads-grid"></div>
+        </section>
+
+        <!-- ===== ADMIN PAGE ===== -->
+        <section id="page-admin" class="page">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
+                <p class="page-subtitle">Quản lý đơn hàng và downloads - King Experience</p>
+            </div>
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="dashboard" onclick="switchAdminTab('dashboard')">
+                    <i class="fas fa-chart-bar"></i> Thống Kê
+                </button>
+                <button class="admin-tab" data-tab="orders" onclick="switchAdminTab('orders')">
+                    <i class="fas fa-list"></i> Đơn Hàng
+                </button>
+                <button class="admin-tab" data-tab="downloads" onclick="switchAdminTab('downloads')">
+                    <i class="fas fa-upload"></i> Upload Download
+                </button>
+            </div>
+
+            <!-- Admin Dashboard Tab -->
+            <div class="admin-panel" id="admin-dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card-admin">
+                        <i class="fas fa-shopping-bag"></i>
+                        <div class="stat-info">
+                            <div class="stat-value" id="admin-total-orders">0</div>
+                            <div class="stat-label">Tổng đơn hàng</div>
+                        </div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <i class="fas fa-clock"></i>
+                        <div class="stat-info">
+                            <div class="stat-value" id="admin-pending-orders">0</div>
+                            <div class="stat-label">Chờ duyệt</div>
+                        </div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <i class="fas fa-check-circle"></i>
+                        <div class="stat-info">
+                            <div class="stat-value" id="admin-approved-orders">0</div>
+                            <div class="stat-label">Đã duyệt</div>
+                        </div>
+                    </div>
+                    <div class="stat-card-admin">
+                        <i class="fas fa-times-circle"></i>
+                        <div class="stat-info">
+                            <div class="stat-value" id="admin-rejected-orders">0</div>
+                            <div class="stat-label">Bị từ chối</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Orders Tab -->
+            <div class="admin-panel" id="admin-orders" style="display:none;">
+                <div class="admin-orders-list" id="admin-orders-list">
+                    <div class="empty-state">
+                        <i class="fas fa-box-open"></i>
+                        <p>Chưa có đơn hàng nào</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Admin Downloads Tab -->
+            <div class="admin-panel" id="admin-downloads" style="display:none;">
+                <div class="upload-form">
+                    <h3><i class="fas fa-upload"></i> Thêm Download Mới</h3>
+                    <div class="form-group">
+                        <label>Tên</label>
+                        <input type="text" id="dl-name" placeholder="Ví dụ: Nhà đẹp v2">
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea id="dl-description" placeholder="Mô tả chi tiết..."></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Loại file</label>
+                            <select id="dl-type">
+                                <option value="schem">.schem</option>
+                                <option value="schematic">.schematic</option>
+                                <option value="litematic">.litematic</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Version</label>
+                            <input type="text" id="dl-version" placeholder="1.20.4">
+                        </div>
+                        <div class="form-group">
+                            <label>Dung lượng</label>
+                            <input type="text" id="dl-size" placeholder="2.5 MB">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Link tải (Google Drive / MediaFire / ...)</label>
+                        <input type="url" id="dl-link" placeholder="https://...">
+                    </div>
+                    <div class="form-group">
+                        <label>Link ảnh preview</label>
+                        <input type="url" id="dl-image" placeholder="https://...">
+                    </div>
+                    <button class="btn-primary" onclick="addDownload()">
+                        <i class="fas fa-plus"></i> Thêm Download
+                    </button>
+                </div>
+                <h3 style="margin-top:30px;"><i class="fas fa-list"></i> Danh sách Downloads</h3>
+                <div class="admin-downloads-list" id="admin-downloads-list"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Order Popup -->
+    <div class="modal-overlay" id="order-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-shopping-cart"></i> Đặt Hàng - King Experience</h2>
+                <button class="modal-close" onclick="closeOrderModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="order-product-info" id="order-product-info"></div>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> IGN Minecraft (tên trong game)</label>
+                    <input type="text" id="order-ign" placeholder="Nhập IGN của bạn trên kingmc.vn">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-server"></i> Server</label>
+                    <input type="text" id="order-server" placeholder="Ví dụ: Survival 1, SkyBlock..." value="kingmc.vn">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-hashtag"></i> Số lượng</label>
+                    <input type="number" id="order-quantity" value="1" min="1" max="10">
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-comment"></i> Ghi chú</label>
+                    <textarea id="order-notes" placeholder="Ghi chú thêm (nếu có)..."></textarea>
+                </div>
+                <div class="order-total">
+                    <span>Tổng cộng:</span>
+                    <span class="total-price" id="order-total-price"></span>
+                </div>
+                <button class="btn-primary btn-full" id="order-submit-btn" onclick="submitOrder()">
+                    <i class="fas fa-paper-plane"></i> ĐẶT HÀNG
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer" id="footer" style="display:none;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-crown"></i>
+                <span>King Experience</span>
+            </div>
+            <p class="footer-text">Cửa hàng vật phẩm Minecraft uy tín #1. Server: kingmc.vn</p>
+            <div class="footer-links">
+                <a href="#" onclick="navigateTo('home')">Trang Chủ</a>
+                <a href="#" onclick="navigateTo('shop')">Shop</a>
+                <a href="#" onclick="navigateTo('orders')">Đơn Hàng</a>
+                <a href="#" onclick="navigateTo('downloads')">Download</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 King Experience (kingmc.vn). All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+    <script src="shop.js"></script>
+    <script src="orders.js"></script>
+    <script src="downloads.js"></script>
+    <script src="admin.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
