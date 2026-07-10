@@ -47,7 +47,7 @@ const CONFIG = {
     // GitHub Personal Access Token (classic, scope: repo)
     // Hướng dẫn: https://github.com/settings/tokens > Generate new token (classic)
     // Chọn scope "repo", no expiration
-    GITHUB_TOKEN: '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',
+    GITHUB_TOKEN: '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',
 
     // GitHub Branch (thường là main hoặc master)
     GITHUB_BRANCH: 'main',
